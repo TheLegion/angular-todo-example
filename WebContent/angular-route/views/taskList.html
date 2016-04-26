@@ -1,0 +1,7 @@
+<h3>Список дел на день</h3>
+<ul>
+	<li ng-repeat="task in tasks" ng-class="{'major': task.major, 'checked': task.checked}">
+		<a href="#{{task.id}}">{{task.text}}</a>
+		<button ng-click="taskDone(task)" ng-if="!task.checked">Выполнено</button>
+	</li>
+</ul>

@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+li.checked {
+	text-decoration: line-through;
+}
+
+li.major {
+	color: red;
+}
