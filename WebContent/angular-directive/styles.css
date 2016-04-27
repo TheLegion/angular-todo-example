@@ -1,9 +1,57 @@
 @CHARSET "UTF-8";
 
-li.checked {
-	text-decoration: line-through;
+* {
+	box-sizing: border-box;
 }
 
-li.major {
-	color: red;
+body {
+	text-align: center;
+	font-size: 16px;
+	background-color: #f5f5f5;
+}
+
+.todo-list {
+	margin-top: 30px;
+	display: inline-block;
+}
+
+.todo-list>header {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+ul {
+	text-align: left;
+	list-style: none;
+	padding: 0px;
+}
+
+li {
+	border: 1px solid grey;
+	background-color: #FFFFFF;
+	padding: 5px;
+	margin: 4px;
+}
+
+li.checked {
+	text-decoration: line-through;
+	color: #b9b9b9;
+}
+
+li>button, li>button:hover, li>button:active {
+	background: inherit;
+	border: none;
+	outline: none;
+	float: right;
+}
+
+li>button:hover {
+	cursor: pointer;
+}
+
+.todo-list>form>input {
+	width: calc(100% - 12px);
+	height: 32px;
+	margin: 0px 4px 0px 4px;
+	padding: 4px;
 }
