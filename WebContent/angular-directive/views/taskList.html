@@ -1,5 +1,5 @@
 <div class="todo-list">
-	<header class="header">Список дел на день</header>
+	<header>Список дел на день</header>
 	<ul>
 		<li ng-repeat="task in tasks" ng-class="{'checked': task.checked}">
 			<input type="checkbox" ng-model="task.checked"> <span href="#{{task.id}}">{{task.text}}</span>

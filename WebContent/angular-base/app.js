@@ -7,10 +7,10 @@ angular.module('taskApp', [])
 function tasksController($scope, taskService) {
   $scope.tasks = taskService.getTasks();
 
-  $scope.taskDone = taskDone;
+  $scope.taskStateChanged = taskStateChanged;
 
-  function taskDone(task) {
-    taskService.setChecked(task);
+  function taskStateChanged(task) {
+    taskService.taskStateChanged(task);
   }
 }
 
@@ -24,23 +24,15 @@ function taskService() {
   }, {
     text: 'Осознать, что два пункта уже выполнено'
   }, {
-    text: 'Отдохнуть',
-    major: true
+    text: 'Отдохнуть'
   }];
 
   this.getTasks = function() {
     return tasks;
   };
 
-  this.addTask = function(task) {
-    if (tasks.indexOf(task) != -1) {
-      tasks.push(task);
-    }
-    return tasks;
-  };
-
-  this.setChecked = function(task) {
-    task.checked = true;
+  this.taskStateChanged = function(task) {
+    console.log('Task state changed. Cool!');
   };
 
 }

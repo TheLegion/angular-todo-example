@@ -1,24 +1,23 @@
 var tasks = [{
   text: 'Составить список дел на день',
-  type: 'checked'
+  checked: true
 }, {
   text: 'Выполнить первый пункт списка',
-  type: 'checked'
+  checked: true
 }, {
   text: 'Осознать, что два пункта уже выполнено'
 }, {
-  text: 'Отдохнуть',
-  type: 'major'
+  text: 'Отдохнуть'
 }];
 
 function init() {
-  var list = document.getElementById('todo');
+  var list = document.getElementById('tasks');
   for (var i = 0; i < tasks.length; i++) {
     var task = tasks[i];
     var elem = document.createElement('li');
     elem.textContent = task.text;
-    if (task.type) {
-      elem.className = task.type;
+    if (task.checked) {
+      elem.className = 'checked';
     }
     list.appendChild(elem);
   }

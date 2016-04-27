@@ -5,13 +5,14 @@
 <link href="styles.css" rel="stylesheet">
 </head>
 <body ng-app="taskApp" ng-controller="tasksController">
-	<h3>Список дел на день</h3>
-	<ul>
-		<li ng-repeat="task in tasks" ng-class="{'major': task.major, 'checked': task.checked}">
-			{{task.text}}
-			<button ng-click="taskDone(task)" ng-if="!task.checked">Выполнено</button>
-		</li>
-	</ul>
+	<div class="todo-list">
+		<header>Список дел на день</header>
+		<ul>
+			<li ng-repeat="task in tasks" ng-class="{'checked': task.checked}">
+				<input type="checkbox" ng-model="task.checked" ng-change="taskStateChanged()"> {{task.text}}
+			</li>
+		</ul>
+	</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
 <script src="app.js"></script>
