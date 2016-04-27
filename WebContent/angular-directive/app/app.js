@@ -12,8 +12,7 @@ function routeConfig($routeProvider) {
   $routeProvider
 
   .when('/', {
-    templateUrl: 'views/taskList.html',
-    controller: 'tasksController'
+    template: '<tasks></tasks>'
   })
 
   .when('/:id', {

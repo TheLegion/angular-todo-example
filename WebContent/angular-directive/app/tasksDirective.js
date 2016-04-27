@@ -1,6 +1,14 @@
 angular.module('taskApp')
 
-.controller('tasksController', tasksController);
+.directive('tasks', taskDirective);
+
+function taskDirective() {
+  return {
+    controller: tasksController,
+    templateUrl: 'views/taskList.html',
+    restrict: 'E'
+  }
+}
 
 function tasksController($scope, taskService, $location) {
   $scope.tasks = taskService.getTasks();
