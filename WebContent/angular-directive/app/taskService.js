@@ -23,13 +23,6 @@ function taskService() {
     return tasks;
   };
 
-  this.addTask = function(task) {
-    if (tasks.indexOf(task) != -1) {
-      tasks.push(task);
-    }
-    return tasks;
-  };
-
   this.setChecked = function(task) {
     task.checked = true;
   };

@@ -8,13 +8,27 @@ angular.module('taskApp', ['ngRoute'])
 
 .config(routeConfig);
 
-function tasksController($scope, taskService) {
+function tasksController($scope, taskService, $location) {
   $scope.tasks = taskService.getTasks();
 
-  $scope.taskDone = taskDone;
+  $scope.taskStateChanged = taskStateChanged;
+  $scope.addTask = addTask;
+  $scope.openTask = openTask;
 
-  function taskDone(task) {
-    taskService.setChecked(task);
+  function taskStateChanged(task) {
+    taskService.taskStateChanged(task);
+  }
+
+  function addTask() {
+    if ($scope.newTask) {
+      var task = taskService.addTask($scope.newTask);
+      $scope.tasks.push(task);
+      $scope.newTask = '';
+    }
+  }
+
+  function openTask(task) {
+    $location.path(task.id);
   }
 }
 
@@ -36,23 +50,23 @@ function taskService() {
     text: 'Осознать, что два пункта уже выполнено'
   }, {
     id: 4,
-    text: 'Отдохнуть',
-    major: true
+    text: 'Отдохнуть'
   }];
 
   this.getTasks = function() {
     return tasks;
   };
 
-  this.addTask = function(task) {
-    if (tasks.indexOf(task) != -1) {
-      tasks.push(task);
-    }
-    return tasks;
-  };
+  this.addTask = function(text) {
+    var task = {
+      text: text,
+      checked: false
+    };
+    return task;
+  }
 
-  this.setChecked = function(task) {
-    task.checked = true;
+  this.taskStateChanged = function(task) {
+    console.log('Task state changed. Cool!');
   };
 
   this.getTask = function(id) {

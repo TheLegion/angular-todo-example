@@ -1,20 +1,8 @@
 angular.module('taskApp', ['ngRoute'])
 
-.controller('tasksController', tasksController)
-
 .controller('taskController', taskController)
 
 .config(routeConfig);
-
-function tasksController($scope, taskService) {
-  $scope.tasks = taskService.getTasks();
-
-  $scope.taskDone = taskDone;
-
-  function taskDone(task) {
-    taskService.setChecked(task);
-  }
-}
 
 function taskController($scope, task) {
   $scope.task = task;
