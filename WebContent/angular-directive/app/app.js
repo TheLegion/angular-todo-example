@@ -12,7 +12,9 @@ function routeConfig($routeProvider) {
   $routeProvider
 
   .when('/', {
-    template: '<tasks></tasks>'
+    template: '<tasks tasks="ctrl.tasks" add-task="ctrl.add(text)"open-task="ctrl.open(task)"></tasks>',
+    controller: tasksViewCtrl,
+    controllerAs: 'ctrl'
   })
 
   .when('/:id', {
@@ -28,4 +30,24 @@ function routeConfig($routeProvider) {
   .otherwise({
     redirectTo: '/'
   });
+}
+
+function tasksViewCtrl(taskService, $location) {
+  var self = this;
+
+  self.tasks = taskService.getTasks();
+  self.add = function(text) {
+    if (text) {
+      var task = {
+        id: self.tasks[self.tasks.length - 1] + 1,
+        checked: false,
+        text: text
+      }
+      self.tasks.push(task);
+    }
+  };
+
+  self.open = function(task) {
+    $location.path(task.id);
+  }
 }

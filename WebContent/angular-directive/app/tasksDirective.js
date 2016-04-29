@@ -5,31 +5,32 @@ angular.module('taskApp')
 function taskDirective() {
   return {
     controller: tasksController,
+    controllerAs: 'ctrl',
     templateUrl: 'views/taskList.html',
-    restrict: 'E'
+    restrict: 'E',
+    scope: {
+      tasks: '<',
+      openTask: '&',
+      addTask: '&'
+    },
+    bindToController: true
   }
 }
 
-function tasksController($scope, taskService, $location) {
-  $scope.tasks = taskService.getTasks();
+function tasksController() {
+  var self = this;
 
-  $scope.taskDone = taskDone;
-  $scope.openTask = openTask;
-  $scope.addTask = addTask;
+  self.add = function() {
+    self.addTask({
+      text: self.newTask
+    });
+    self.newTask = null;
+  };
 
-  function taskDone(task) {
-    taskService.setChecked(task);
-  }
+  self.open = function(task) {
+    self.openTask({
+      task: task
+    });
+  };
 
-  function openTask(task) {
-    $location.path(task.id);
-  }
-
-  function addTask() {
-    if ($scope.newTask) {
-      var task = taskService.addTask($scope.newTask);
-      $scope.tasks.push(task);
-      $scope.newTask = '';
-    }
-  }
 }
