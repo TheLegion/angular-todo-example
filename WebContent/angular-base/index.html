@@ -8,12 +8,13 @@
 	<div class="todo-list">
 		<header>Список дел на день</header>
 		<ul>
-			<li ng-repeat="task in tasks" ng-class="{'checked': task.checked}">
-				<input type="checkbox" ng-model="task.checked" ng-change="taskStateChanged()"> {{task.text}}
+			<li ng-repeat="task in tasks" ng-class="task.checked ? 'checked' : ''">
+				<input type="checkbox" ng-checked="task.checked" ng-click="taskStateChanged(task)">
+				{{task.text}}
 			</li>
 		</ul>
 		<form ng-submit="addTask()">
-			<input type="text" ng-model="newTask" placeholder="Добавить задачу">
+			<input type="text" ng-model="newTaskText" placeholder="Добавить задачу">
 		</form>
 	</div>
 </body>

@@ -15,10 +15,9 @@ function tasksController($scope, taskService) {
   }
 
   function addTask() {
-    if ($scope.newTask) {
-      var task = taskService.addTask($scope.newTask);
-      $scope.tasks.push(task);
-      $scope.newTask = '';
+    if ($scope.newTaskText) {
+      taskService.addTask($scope.newTaskText);
+      $scope.newTaskText = '';
     }
   }
 }
@@ -36,20 +35,22 @@ function taskService() {
     text: 'Отдохнуть'
   }];
 
-  this.getTasks = function() {
-    return tasks;
-  };
+  return {
+    getTasks: function() {
+      return tasks;
+    },
 
-  this.taskStateChanged = function(task) {
-    console.log('Task state changed. Cool!');
-  };
+    taskStateChanged: function(task) {
+      task.checked = !task.checked;
+    },
 
-  this.addTask = function(text) {
-    var task = {
-      text: text,
-      checked: false
-    };
-    return task;
+    addTask: function(text) {
+      var task = {
+        text: text,
+        checked: false
+      };
+      tasks.push(task);
+    }
   }
 
 }
