@@ -1,0 +1,12 @@
+<div class="todo-list">
+	<header>Список дел на день</header>
+	<ul>
+		<li ng-repeat="task in tasks" ng-class="task.checked ? 'checked' : ''">
+			<input type="checkbox" ng-checked="task.checked" ng-click="stateChanged(task)">
+			{{task.text}}
+		</li>
+	</ul>
+	<form ng-submit="addTask()">
+		<input type="text" ng-model="newTaskText" placeholder="Введите текст новой задачи">
+	</form>
+</div>

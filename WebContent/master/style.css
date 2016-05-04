@@ -1,0 +1,44 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	text-align: center;
+	font-size: 16px;
+	background-color: #F5F5F5;
+}
+
+.todo-list {
+	margin-top: 30px;
+	display: inline-block;
+}
+
+header {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+ul {
+	text-align: left;
+	list-style: none;
+	padding: 0px;
+}
+
+li {
+	border: 1px solid grey;
+	background-color: #FFFFFF;
+	padding: 5px;
+	margin: 4px;
+}
+
+li.checked {
+	text-decoration: line-through;
+	color: #B9B9B9;
+}
+
+form>input {
+	width: calc(100% - 6px);
+	height: 32px;
+	margin: 0px 3px;
+	padding: 4px;
+}

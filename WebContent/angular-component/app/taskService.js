@@ -20,15 +20,14 @@ function taskService() {
       return tasks;
     },
     taskStateChanged: function(task) {
-      task.checked = true;
+      task.checked = !task.checked;
     },
     addTask: function(text) {
       var task = {
         text: text,
-        checked: false,
-        id: tasks[tasks.length - 1].id
+        checked: false
       };
-      return task;
+      tasks.push(task);
     }
   }
 
