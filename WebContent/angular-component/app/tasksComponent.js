@@ -6,25 +6,25 @@ angular.module('taskApp')
   templateUrl: 'views/taskList.html',
   bindings: {
     tasks: '<',
-    openTask: '&',
-    addTask: '&'
+    add: '&',
+    stateChanged: '&'
   }
 });
 
 function tasksController() {
   var self = this;
 
-  self.add = function() {
-    self.addTask({
-      text: self.newTask
+  self.addTask = function() {
+    self.add({
+      text: self.newTaskText
     });
-    self.newTask = null;
+    self.newTaskText = null;
   };
 
-  self.open = function(task) {
-    self.openTask({
+  self.taskStateChanged = function(task) {
+    self.stateChanged({
       task: task
     });
-  };
+  }
 
 }
